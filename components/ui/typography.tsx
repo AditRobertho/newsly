@@ -21,9 +21,20 @@ export const H1 = ({
   )
 }
 
-export const H2 = ({ children }: { children: ReactNode }) => {
+export const H2 = ({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) => {
   return (
-    <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+    <h2
+      className={cn(
+        "scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0",
+        className
+      )}
+    >
       {children}
     </h2>
   )
@@ -49,19 +60,51 @@ export const Paragraph = ({ children }: { children: ReactNode }) => {
   return <p className="leading-7 [::not(:first-child)]:mt-6">{children}</p>
 }
 
-export const Lead = ({ children }: { children: ReactNode }) => {
-  return <p className="text-muted-foreground text-xl">{children}</p>
+export const Lead = ({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) => {
+  return (
+    <p className={cn("text-muted-foreground text-xl", className)}>{children}</p>
+  )
 }
 
-export const Large = ({ children }: { children: ReactNode }) => {
-  return <p className="text-lg font-semibold">{children}</p>
+export const Large = ({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) => {
+  return <p className={cn("text-lg font-semibold", className)}>{children}</p>
 }
-export const Small = ({ children }: { children: ReactNode }) => {
-  return <p className="text-sm font-medium leading-none">{children}</p>
+export const Small = ({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) => {
+  return (
+    <p className={cn("text-sm font-medium leading-none", className)}>
+      {children}
+    </p>
+  )
 }
 
-export const Muted = ({ children }: { children: ReactNode }) => {
-  return <p className="text-muted-foreground text-sm">{children}</p>
+export const Muted = ({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) => {
+  return (
+    <p className={cn("text-muted-foreground text-sm", className)}>{children}</p>
+  )
 }
 
 export const Blockquote = ({ children }: { children: ReactNode }) => {
