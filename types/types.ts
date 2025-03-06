@@ -14,7 +14,7 @@ export type Article = {
 export type Category =
   | "general"
   | "business"
-  | "entertaiment"
+  | "entertainment"
   | "health"
   | "science"
   | "sports"

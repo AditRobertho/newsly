@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { NavigationMenuItem } from "@radix-ui/react-navigation-menu"
 import { Banknote, BikeIcon, CpuIcon, FlaskConical, TvIcon } from "lucide-react"
 
@@ -15,16 +16,18 @@ import {
 import { Separator } from "./ui/separator"
 
 const categories = [
-  { label: "bussines", icon: Banknote },
-  { label: "entertaiment", icon: TvIcon },
+  { label: "business", icon: Banknote },
+  { label: "entertainment", icon: TvIcon },
   { label: "science", icon: FlaskConical },
   { label: "sports", icon: BikeIcon },
   { label: "technology", icon: CpuIcon },
 ]
 
 export const Categories = () => {
+  const pathname = usePathname()
+
   return (
-    <NavigationMenu className="max-w-[95vw] flex items-start justify-start">
+    <NavigationMenu className="flex max-w-[95vw] items-start justify-start">
       <NavigationMenuList>
         {categories.map((category, index) => (
           <NavigationMenuItem key={category.label}>
@@ -35,7 +38,15 @@ export const Categories = () => {
                   "px-2 transition-all hover:bg-transparent hover:text-orange-800"
                 )}
               >
-                <div className="flex items-center justify-between gap-2  capitalize">
+                <div
+                  className={cn(
+                    "flex items-center justify-between gap-2  capitalize",
+                    {
+                      "text-orange-700":
+                        pathname === `/category/${category.label}`,
+                    }
+                  )}
+                >
                   {<category.icon className="size-4" />}
                   <span className="text-sm">{category.label}</span>
                   {index === categories?.length - 1 ? null : (
